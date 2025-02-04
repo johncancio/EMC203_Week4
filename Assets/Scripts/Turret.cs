@@ -14,7 +14,7 @@ public class Turret : MonoBehaviour
 
     void Update()
     {
-        fireCooldownTimer -= Time.deltaTime; // Decrease cooldown timer
+        fireCooldownTimer -= Time.deltaTime;
         
         FindClosestEnemy();
 
@@ -23,13 +23,13 @@ public class Turret : MonoBehaviour
         Vector3 directionToEnemy = (targetEnemy.position - transform.position).normalized;
         RotateTowardsTarget(directionToEnemy);
 
-        Vector3 turretDirection = transform.right; // Turret's facing direction
-        float dot = Vector3.Dot(turretDirection, directionToEnemy); // Compare turret direction to enemy direction
+        Vector3 turretDirection = transform.right;
+        float dot = Vector3.Dot(turretDirection, directionToEnemy);
         
         if (dot > firingAngleThreshold && fireCooldownTimer <= 0f)
         {
             Fire(turretDirection);
-            fireCooldownTimer = fireCooldown; // Reset cooldown
+            fireCooldownTimer = fireCooldown;
         }
     }
 
@@ -55,6 +55,5 @@ public class Turret : MonoBehaviour
     {
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         projectile.GetComponent<Projectile>().SetDirection(direction);
-        Debug.Log("Turret Fired!"); // Debug message to check if firing works
     }
 }

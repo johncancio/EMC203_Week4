@@ -25,7 +25,7 @@ public class CreatureSpawner : MonoBehaviour
     void SpawnQuadraticCreature()
     {
         GameObject enemy = Instantiate(creaturePrefab, spawnPointQuadratic.position, Quaternion.identity);
-        Vector3 controlPoint = spawnPointQuadratic.position + new Vector3(2f, 3f, 0f); // Adjust as needed
+        Vector3 controlPoint = spawnPointQuadratic.position + new Vector3(2f, 3f, 0f);
         enemy.GetComponent<Enemy>().SetPath(spawnPointQuadratic.position, controlPoint, endPoint.position);
     }
 
